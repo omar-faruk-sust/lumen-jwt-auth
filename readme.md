@@ -23,8 +23,8 @@ Documentation for the framework can be found on the [Lumen website](http://lumen
 2. cd lumen-jwt-auth and run `composer install`
 3. Config your .env file (copy example.env file and rename it .env and config it based on your local mysql server)
 4. Set your `APP_KEY and JWT_SECRET` on .env file 
- ##### run `php artisan jwt:secret` to set JWT_SECRET
- ##### To set `APP_KEY` key check the `routes/web.php` file
+ - run `php artisan jwt:secret` to set JWT_SECRET
+ - To set `APP_KEY` key check the `routes/web.php` file
 
 uncomment This code
 
@@ -43,25 +43,33 @@ Note: In my case i am running my local php(apache) server with vhost(http://jume
 8. run you local server with vhost or boot up your server
 
 `auth/register` is url for user registration. So hit on postman with POST method with this sample payload as body
-   `{
-        "name": "Omar Faruk",
-        "email" : "omar@test.com",
-        "password" : "123456"
-    }`
+    
+```
+{
+	"name": "Omar Faruk",
+	"email" : "omar@test.com",
+	"password" : "123456"
+}
+```
 
 Hit this url(http://jumen-jwt-auth.local/auth/login) into postman with POST method
 provide this sample user payload on postman as body with request
-    `{
-        "email" : "rolando.blick@example.com", 
-        "password" : "secret"
-    }`
+
+```
+{
+	"email" : "omar@test.com",
+	"password" : "123456"
+}
+```
 
 In response you will get like this: 
-
-`{ "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9qdW1lbi1qd3QtYXV0aC5sb2NhbFwvYXV0aFwvbG9naW4iLCJpYXQiOjE1MzU5NDI1MjYsImV4cCI6MTUzNTk0NjEyNiwibmJmIjoxNTM1OTQyNTI2LCJqdGkiOiJiYTlUTXd5N2p4UzgwSVBBIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.yE-JFEEjA_BUr-wn2zcndu4BwTJss-oKGHQrgax3J3I",
- "token_type": "bearer",
- "expires_in": 3600
-}`
+```
+{
+	"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9qdW1lbi1qd3QtYXV0aC5sb2NhbFwvYXV0aFwvbG9naW4iLCJpYXQiOjE1MzU5NDI1MjYsImV4cCI6MTUzNTk0NjEyNiwibmJmIjoxNTM1OTQyNTI2LCJqdGkiOiJiYTlUTXd5N2p4UzgwSVBBIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.yE-JFEEjA_BUr-wn2zcndu4BwTJss-oKGHQrgax3J3I",
+ 	"token_type": "bearer",
+ 	"expires_in": 3600
+}
+```
 
 This is the url for logout of logged in user. http://jumen-jwt-auth.local/auth/logout
 This is a post request and you have to provide `Authorization` & `bearer token` on header to hit this url
