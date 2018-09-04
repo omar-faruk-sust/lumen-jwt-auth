@@ -24,9 +24,6 @@ $router->get('/', function () use ($router) {
     return str_random(32);
 });*/
 
-//$router->post('/auth/login', 'AuthController@postLogin');
-
-
 /* Auth Routes */
 $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
 
@@ -38,10 +35,10 @@ $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
         'as' => 'login',
         'uses' => 'AuthController@login',
     ]);
-    $router->get('/verify/{token}', [
-        'as' => 'verify',
-        'uses' => 'AuthController@verify'
-    ]);
+
+    $router->post('/logout', 'AuthController@logout');
+    $router->post('/refresh', 'AuthController@refresh');
+    $router->post('/me', 'AuthController@me');
 
     $router->post('/password/forgot', [
         'as' => 'password.forgot',
@@ -51,12 +48,6 @@ $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
         'as' => 'password.recover',
         'uses' => 'AuthController@recoverPassword'
     ]);
-
-    /*$router->get('/user', [
-        'uses' => 'AuthController@getUser',
-        'as' => 'user',
-        'middleware' => 'auth'
-    ]);*/
 
 });
 
