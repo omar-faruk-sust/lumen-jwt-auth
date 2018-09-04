@@ -14,8 +14,8 @@ Documentation for the framework can be found on the [Lumen website](http://lumen
 
 ## What is added in this demo project?
 
-[Lumen 5.6](http://lumen.laravel.com/docs).
-[JWT Auth](https://github.com/tymondesigns/jwt-auth)
+- [Lumen 5.6](http://lumen.laravel.com/docs).
+- [JWT Auth](https://github.com/tymondesigns/jwt-auth)
 
 ## Follow this steps to set-up this project
 
