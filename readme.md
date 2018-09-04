@@ -23,8 +23,8 @@ Documentation for the framework can be found on the [Lumen website](http://lumen
 2. cd lumen-jwt-auth and run `composer install`
 3. Config your .env file (copy example.env file and rename it .env and config it based on your local mysql server)
 4. Set your `APP_KEY and JWT_SECRET` on .env file 
- - run `php artisan jwt:secret` to set JWT_SECRET
- - To set `APP_KEY` key check the `routes/web.php` file
+   - run `php artisan jwt:secret` to set JWT_SECRET
+   - To set `APP_KEY` key check the `routes/web.php` file
 
 uncomment This code
 
