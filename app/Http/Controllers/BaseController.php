@@ -8,8 +8,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class BaseController extends Controller
 {
     /**
@@ -20,8 +18,8 @@ class BaseController extends Controller
     public function error($errcode, $errmsg)
     {
         return response()->json([
-            'errcode' => $errcode,
-            'errmsg' => $errmsg
+            'error_code' => $errcode,
+            'error_message' => $errmsg
         ], 401);
     }
 

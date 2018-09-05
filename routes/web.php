@@ -51,11 +51,7 @@ $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
 
 });
 
-$router->group(['middleware' => 'auth'], function (Router $router) {
-    //
-});
-
-//both does work. for prefix aad api infront of url
+//both does work. for prefix aad api in front of url
 $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
 //$router->group(['middleware' => 'auth:api'], function () use ($router) {
     $router->get('authors',  ['uses' => 'AuthorController@showAllAuthors']);

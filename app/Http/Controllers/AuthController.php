@@ -54,7 +54,7 @@ class AuthController extends BaseController
         }
         $credentials = $request->only('email', 'password');
         if (!$token = Auth::guard('api')->attempt($credentials)) {
-            return response()->json(['errcode' => 40001, 'errmsg' => 'Unauthorized.'], 401);
+            return response()->json(['error_code' => 40001, 'error_message' => 'Unauthorized.'], 401);
         }
         return $this->respondWithToken($token);
     }

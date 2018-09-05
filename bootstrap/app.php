@@ -23,9 +23,11 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
-
-// $app->withEloquent();
+/**
+ * By Default lumen does not activate them
+ */
+$app->withFacades();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -67,10 +69,6 @@ $app->singleton(
      'auth' => App\Http\Middleware\Authenticate::class,
  ]);
 
-$app->routeMiddleware([
-    'jwt' => App\Http\Middleware\JwtMiddleware::class,
-]);
-
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -105,12 +103,5 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
-
-/**
- * By Default lumen does not add them
- */
-$app->withFacades();
-$app->withEloquent();
-
 
 return $app;

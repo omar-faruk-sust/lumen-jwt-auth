@@ -36,7 +36,8 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+            //return response('You are not authorized to access this end point.', 401);
+            return response()->json(['error_code' => 40001, 'error_message' => 'You are not authorized to access this end point.'], 401);
         }
 
         return $next($request);
