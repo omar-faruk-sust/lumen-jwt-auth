@@ -32,10 +32,10 @@ uncomment This code
     return str_random(32);
 });*/
 `
-And than hit this url(http://jumen-jwt-auth.local/key) as get method on postman
+And than hit this url(http://lumen-jwt-auth.local/key) as get method on postman
 Set that key as APP_KEY on .env file
 
-Note: In my case i am running my local php(apache) server with vhost(http://jumen-jwt-auth.local)
+Note: In my case i am running my local php(apache) server with vhost(http://lumen-jwt-auth.local)
 
 5. run `php artisan migrate`
 6. run `php artisan db:seed` // it will generate fake data into your tables
@@ -52,7 +52,7 @@ Note: In my case i am running my local php(apache) server with vhost(http://jume
 }
 ```
 
-Hit this url(http://jumen-jwt-auth.local/auth/login) into postman with POST method
+Hit this url(`http://lumen-jwt-auth.local/auth/login`) into postman with POST method
 provide this sample user payload on postman as body with request
 
 ```
@@ -71,8 +71,28 @@ In response you will get like this:
 }
 ```
 
-This is the url for logout of logged in user. http://jumen-jwt-auth.local/auth/logout
-This is a post request and you have to provide `Authorization` & `bearer token` on header to hit this url
+This is the url for logout of logged in user.  `http://lumen-jwt-auth.local/auth/logout`
+This is a post request and you have to provide `Authorization` & `bearer your token` on header to hit this url
+You can also test other api written in this demo project. For other end point check the `routes/web.php`.
+Here is other Three api end point. 
+
+-- http://lumen-jwt-auth.local/api/authors  //GET method
+-- http://lumen-jwt-auth.local/api/authors/5 //GET method
+-- http://lumen-jwt-auth.local/api/authors/5 // PUT method
+provide this jason payload to update an author
+
+```
+{
+    "name": "Erika Torp",
+    "email": "kali64@example.org",
+    "github": "GitHub Test test",
+    "twitter": "test Twitter test",
+    "location": "Montreal, Canada",
+    "latest_article_published": "Lumen WIth JWT"
+}
+```
+
+Note: You have to provide `Authorization` & `bearer your token` on header. otherwise you will get Unauthorized error.
 
 ## Security Vulnerabilities
 
