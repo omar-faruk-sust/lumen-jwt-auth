@@ -76,9 +76,11 @@ This is a post request and you have to provide `Authorization` & `bearer your to
 You can also test other api written in this demo project. For other end point check the `routes/web.php`.
 Here is other Three api end point. 
 
--- http://lumen-jwt-auth.local/api/authors  //GET method
--- http://lumen-jwt-auth.local/api/authors/5 //GET method
--- http://lumen-jwt-auth.local/api/authors/5 // PUT method
+- http://lumen-jwt-auth.local/api/authors  //GET method
+
+- http://lumen-jwt-auth.local/api/authors/5 //GET method
+
+- http://lumen-jwt-auth.local/api/authors/5 // PUT method
 provide this jason payload to update an author
 
 ```
