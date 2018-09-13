@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Http\Resources\AuthorResource;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -21,7 +22,7 @@ class AuthorController extends Controller
 
     public function showAllAuthors()
     {
-        return response()->json(Author::all());
+        return AuthorResource::collection(Author::paginate(5));
     }
 
     public function showOneAuthor($id)

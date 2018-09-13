@@ -41,5 +41,22 @@ class Authenticate
         }
 
         return $next($request);
+
+
+        /*if(!$request->hasHeader('Authorization')) {
+            return response()->json('Authorization Header not found', 401);
+        }
+
+        $token = $request->bearerToken();
+
+        if($request->header('Authorization') == null || $token == null) {
+            return response()->json('No token provided', 401);
+        }
+
+        $this->retrieveAndValidateToken($token);
+
+        return $next($request);*/
+
+
     }
 }
