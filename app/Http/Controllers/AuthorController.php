@@ -11,8 +11,9 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Http\Resources\AuthorResource;
 use Illuminate\Http\Request;
+use Validator;
 
-class AuthorController extends Controller
+class AuthorController extends BaseController
 {
 
     public function __construct()
@@ -22,7 +23,7 @@ class AuthorController extends Controller
 
     public function showAllAuthors()
     {
-        return AuthorResource::collection(Author::paginate(5));
+        return AuthorResource::collection(Author::paginate(1000));
     }
 
     public function showOneAuthor($id)
@@ -32,11 +33,15 @@ class AuthorController extends Controller
 
     public function create(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:authors',
             'location' => 'required|alpha'
         ]);
+
+        if ($validator->fails()) {
+            return $this->errorValidator(40001, $validator);
+        }
 
         $author = Author::create($request->all());
 
@@ -45,6 +50,16 @@ class AuthorController extends Controller
 
     public function update($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:authors,email,'.$id,
+            'location' => 'required|alpha'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorValidator(40001, $validator);
+        }
+
         $author = Author::findOrFail($id);
         $author->update($request->all());
 
@@ -56,4 +71,5 @@ class AuthorController extends Controller
         Author::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
+
 }
